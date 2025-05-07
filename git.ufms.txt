@@ -1,43 +1,78 @@
-CREATE TABLE clientes (
- id INT PRIMARY KEY,
- nome VARCHAR(255) NOT NULL,
- email VARCHAR(255) UNIQUE NOT NULL,
- telefone VARCHAR(20) NOT NULL
-);
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestor de Projetos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    header {
+      background-color: #007bff;
+      color: white;
+      padding: 1.5rem 0;
+    }
+    footer {
+      background-color: #f8f9fa;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
 
-CREATE TABLE pedidos (
- id INT PRIMARY KEY,
- id_cliente INT NOT NULL,
- data_pedido DATE NOT NULL,
- total DECIMAL(10, 2) NOT NULL,
- FOREIGN KEY (id_cliente) REFERENCES clientes(id)
-);
+  <header class="text-center">
+    <h1>Gestor de Projetos</h1>
+    <p>Organize suas tarefas e otimize seu tempo</p>
+  </header>
 
-CREATE TABLE produtos (
- id INT PRIMARY KEY,
- nome VARCHAR(255) NOT NULL,
- preco DECIMAL(10, 2) NOT NULL
-);
+  <main class="container my-5">
+    <section aria-labelledby="sobre">
+      <h2 id="sobre">Sobre o Projeto</h2>
+      <p>
+        Esta aplicação web foi desenvolvida para auxiliar pequenas e médias empresas no gerenciamento de tarefas e projetos.
+        O sistema oferece uma interface intuitiva, responsiva e segura, permitindo que usuários organizem atividades,
+        acompanhem o progresso e melhorem a produtividade.
+      </p>
+    </section>
 
-CREATE TABLE administradores (
- id INT PRIMARY KEY,
- nome VARCHAR(255) NOT NULL,
- email VARCHAR(255) UNIQUE NOT NULL
-);
+    <section class="mt-5" aria-labelledby="funcionalidades">
+      <h2 id="funcionalidades">Funcionalidades</h2>
+      <ul>
+        <li>Cadastro e login de usuários</li>
+        <li>Criação e acompanhamento de tarefas e projetos</li>
+        <li>Visualização por status: pendente, em andamento e concluído</li>
+        <li>Interface responsiva para uso em desktop, tablet e celular</li>
+        <li>Persistência de dados em banco PostgreSQL</li>
+      </ul>
+    </section>
 
-CREATE TABLE pedidos_produtos (
- id_pedido INT NOT NULL,
- id_produto INT NOT NULL,
- PRIMARY KEY (id_pedido, id_produto),
- FOREIGN KEY (id_pedido) REFERENCES pedidos(id),
- FOREIGN KEY (id_produto) REFERENCES produtos(id)
-);
-INSERT INTO clientes (nome, email, telefone) VALUES ('João', 'joao@exemplo.com', '123456789');
-INSERT INTO pedidos (id_cliente, data_pedido, total) VALUES (1, '2023-03-01', 100.00);
-INSERT INTO produtos (nome, preco) VALUES ('Café', 5.00);
-INSERT INTO pedidos_produtos (id_pedido, id_produto) VALUES (1, 1);
-INSERT INTO pedidos_produtos (id_pedido, id_produto) VALUES (1, 1);
-UPDATE pedidos SET total = 150.00 WHERE id = 1;
-DELETE FROM pedidos WHERE id = 1;
-SELECT * FROM pedidos WHERE id_cliente = 1;
-SELECT * FROM produtos WHERE id IN (SELECT id_produto FROM pedidos_produtos WHERE id_pedido = 1);
+    <section class="mt-5" aria-labelledby="tecnologias">
+      <h2 id="tecnologias">Tecnologias Utilizadas</h2>
+      <ul>
+        <li>HTML5, CSS3, JavaScript</li>
+        <li>Framework: Bootstrap 5</li>
+        <li>Banco de Dados: PostgreSQL</li>
+        <li>Controle de Versão: Git e GitHub</li>
+      </ul>
+    </section>
+
+    <section class="mt-5" aria-labelledby="repositorio">
+      <h2 id="repositorio">Repositório GitHub</h2>
+      <p>Acesse o código-fonte no GitHub: 
+        <a href="https://github.com/Johnn-lucas/Avalia-o-do-M-dulo-3---Banco-de-Dados-e-Controle-de-Ver-s-o" target="_blank" rel="noopener noreferrer">
+          Repositório do Projeto
+        </a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Desenvolvido por Johnn Lucas Rangel de Souza — Projeto Integrador de TI II
+  </footer>
+
+</body>
+</html>
